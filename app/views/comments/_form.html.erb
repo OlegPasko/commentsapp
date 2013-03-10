@@ -9,12 +9,10 @@
 			<%= f.text_area :body, rows: 5, placeholder: 'Комментарий', class: 'input-block-level' %>
 		</div>
 	</div>
-	<%= f.hidden_field :comment_id, placeholder: 'Имя', value: params[:id] ? params[:id] : '0', class: '' %>
+	<%= f.hidden_field :parent_id, placeholder: 'Имя', value: params[:id] ? params[:id] : nil, class: '' %>
 	<div class="control-group">
 		<div class="controls">
-			<%= button_tag(type: 'submit', class: "btn") do %>
-				<i class="icon-comment"></i> Написать</a>
-			<% end %>
+			<%= f.submit 'Post it!', class: 'btn' %>
 		</div>
 	</div>
 <% end %>

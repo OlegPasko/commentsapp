@@ -32,7 +32,7 @@ gem 'jquery-rails'
 #gem 'therubyracer' # Ruby
 gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 #gem 'less-rails'
-
+gem 'ancestry'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 

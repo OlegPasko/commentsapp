@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130309220432) do
+ActiveRecord::Schema.define(version: 20130310195632) do
 
   create_table "comments", force: true do |t|
     t.string   "name"
     t.text     "body"
-    t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
   end
+
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry"
 
 end

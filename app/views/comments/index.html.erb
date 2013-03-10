@@ -3,9 +3,18 @@
 <hr>
 <%= bootstrap_flash %>
 <div class="first_level comment_box">
-	<%= render 'comment', comments: @comments %>
+	<% @comments.each do |c| %>
+		<div class="next_level">
+			<blockquote>
+			  <p><%= c.body %></p>
+			  <small class="pull-right reply"><%= link_to 'Reply', new_comment_path(id: c.id), remote: true, class: "add_comment#{c.id}" %></small>
+			  <small><%= c.name %> @ <%= c.created_at.strftime('%d.%m.%Y')%></small>
+			</blockquote>
+			<%= render 'comment', comments: c.descendants.arrange %>
+		</div>
+	<% end %>
 </div>
 <div class="root_comment">
-	<h4><i class="icon-edit"></i> <%= link_to 'Написать комментарий', new_comment_path(id: 0), remote: true, class: 'add_comment0' %></h4>
+	<h4><i class="icon-edit"></i> <%= link_to 'Add a comment', new_comment_path(id: 0), remote: true, class: 'add_comment0' %></h4>
 </div>
 <%= render :partial => 'form' %>

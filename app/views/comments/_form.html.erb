@@ -1,15 +1,15 @@
 <%= form_for(@comment, :html => { :class => 'form-vertical' }) do |f| %>
 	<div class="control-group">
 		<div class="controls">
-			<%= f.text_field :name, size: 20, placeholder: 'Имя', class: '' %>
+			<%= f.text_field :name, size: 20, placeholder: 'Name', class: '' %>
 		</div>
 	</div>
 	<div class="control-group">
 		<div class="controls">
-			<%= f.text_area :body, rows: 5, placeholder: 'Комментарий', class: 'input-block-level' %>
+			<%= f.text_area :body, rows: 5, placeholder: 'Body', class: 'input-block-level' %>
 		</div>
 	</div>
-	<%= f.hidden_field :parent_id, placeholder: 'Имя', value: params[:id] ? params[:id] : nil, class: '' %>
+	<%= f.hidden_field :parent_id, value: params[:id] ? params[:id] : nil, class: '' %>
 	<div class="control-group">
 		<div class="controls">
 			<%= f.submit 'Post it!', class: 'btn' %>

@@ -1,4 +1,64 @@
 <h1>Page for commenting</h1>
 <p>And some holywar topic that can be discussed :)</p>
 <hr>
-<a class="btn" href="#"><i class="icon-comment"></i> Оставить комментарий</a>
+<%= bootstrap_flash %>
+<% @comments.each do |c| %>
+	<div class="first_level comment_box">
+		<blockquote>
+		  <p><%= c.body %></p>
+		  <small class="pull-right reply"><%= link_to 'Ответить', new_comment_path(id: c.id), remote: true, class: "add_comment#{c.id}" %></small>
+		  <small><%= c.name %> от <%= c.created_at.strftime('%d.%m.%Y')%></small>
+		</blockquote>
+		<% c.comments.each do |c| %>
+			<div class="next_level">
+				<blockquote>
+				  <p><%= c.body %></p>
+				  <small class="pull-right reply"><%= link_to 'Ответить', new_comment_path(id: c.id), remote: true, class: "add_comment#{c.id}" %></small>
+				  <small><%= c.name %> от <%= c.created_at.strftime('%d.%m.%Y')%></small>
+				</blockquote>
+				<% c.comments.each do |c| %>
+					<div class="next_level">
+						<blockquote>
+						  <p><%= c.body %></p>
+						  <small class="pull-right reply"><%= link_to 'Ответить', new_comment_path(id: c.id), remote: true, class: "add_comment#{c.id}" %></small>
+						  <small><%= c.name %> от <%= c.created_at.strftime('%d.%m.%Y')%></small>
+						</blockquote>
+						<% c.comments.each do |c| %>
+							<div class="next_level">
+								<blockquote>
+								  <p><%= c.body %></p>
+								  <small class="pull-right reply"><%= link_to 'Ответить', new_comment_path(id: c.id), remote: true, class: "add_comment#{c.id}" %></small>
+								  <small><%= c.name %> от <%= c.created_at.strftime('%d.%m.%Y')%></small>
+								</blockquote>
+								<% c.comments.each do |c| %>
+									<div class="next_level">
+										<blockquote>
+										  <p><%= c.body %></p>
+										  <small class="pull-right reply"><%= link_to 'Ответить', new_comment_path(id: c.id), remote: true, class: "add_comment#{c.id}" %></small>
+										  <small><%= c.name %> от <%= c.created_at.strftime('%d.%m.%Y')%></small>
+										</blockquote>
+										<% c.comments.each do |c| %>
+											<div class="next_level">
+												<blockquote>
+												  <p><%= c.body %></p>
+												  <small><%= c.name %> от <%= c.created_at.strftime('%d.%m.%Y')%></small>
+												</blockquote>
+											</div>		
+										<% end %>
+									</div>		
+								<% end %>
+							</div>		
+						<% end %>
+					</div>		
+				<% end %>
+			</div>		
+		<% end %>
+	</div>
+		
+	
+	
+<% end %>
+<div class="root_comment">
+	<h4><i class="icon-edit"></i> <%= link_to 'Написать комментарий', new_comment_path(id: 0), remote: true, class: 'add_comment0' %></h4>
+</div>
+<%= render :partial => 'form' %>

@@ -1,4 +1,3 @@
-== README
+== Comments app with Ancestry gem example
 
-Как то так... Еще бы отDRYить вьюху, да валидаций, в т.ч. и с клиентской стороны, добавить.
-Задеплоил на Хероку, что бы потыцать: http://commentsapp.herokuapp.com/
+Check it in action: http://commentsapp.herokuapp.com/
